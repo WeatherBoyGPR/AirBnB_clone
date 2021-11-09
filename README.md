@@ -25,7 +25,9 @@ Resources
 **Read or watch:*
 
 * [cmd module](https://docs.python.org/3.4/library/cmd.html)
+
 **packages concept page**
+
   * [Creating a Python Package](https://www.pythoncentral.io/how-to-create-a-python-package/)
 * [uuid module](https://docs.python.org/3.4/library/uuid.html)
 * [datetime](https://docs.python.org/3.4/library/datetime.html)
