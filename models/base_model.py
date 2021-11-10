@@ -17,10 +17,10 @@ class BaseModel():
 
     def __init__(self, *args, **kwargs):
         """
-        Object Constructor.
+        Object Constructor of BaseModel.
         1. Initialize for now the new instance of the BaseModel class.
         2. Recreates a class instance from a dictionary wit,
-        Attributes:
+        Attributes (public instance):
         a. id (str) - unique id number `UUID`
             created for each class instance.
         b. created_at (datetime) - assignes the current datetime,
@@ -28,9 +28,7 @@ class BaseModel():
         c. udated_at (datetime) - assigned when created and updated everytime object is changed.
 
         """
-        if kwargs:
-            dtime = 
-            time = "%Y-%m-%dT%H:%M:%S.%f"
+        time = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid.uuid4())
         self.created_at = datetime.utcnow()
         self.updated_at = datetime.utcnow()
@@ -51,6 +49,7 @@ class BaseModel():
 
     def to_dict(self):
         """
+        Public Instance Method:
         returns a dictionary containing all keys/values of
         the instance
         """
