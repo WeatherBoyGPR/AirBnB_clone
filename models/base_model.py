@@ -9,16 +9,28 @@ import models
 import uuid
 from datetime import datetime
 
-class BaseModel:
+class BaseModel():
     """
-    BaseModel class
+    BaseModel class: Defines all common attributes/methods
+    for other classes:
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
-        Initialize for now
+        Object Constructor.
+        1. Initialize for now the new instance of the BaseModel class.
+        2. Recreates a class instance from a dictionary wit,
+        Attributes:
+        a. id (str) - unique id number `UUID`
+            created for each class instance.
+        b. created_at (datetime) - assignes the current datetime,
+            whe instance is created.
+        c. udated_at (datetime) - assigned when created and updated everytime object is changed.
+
         """
-        time = "%Y-%m-%dT%H:%M:%S.%f"
+        if kwargs:
+            dtime = 
+            time = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid.uuid4())
         self.created_at = datetime.utcnow()
         self.updated_at = datetime.utcnow()
