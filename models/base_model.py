@@ -28,7 +28,7 @@ class BaseModel():
         c. udated_at (datetime) - assigned when created and updated everytime object is changed.
 
         """
-        time = "%Y-%m-%dT%H:%M:%S.%f"
+        timef = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid.uuid4())
         self.created_at = datetime.utcnow()
         self.updated_at = datetime.utcnow()
