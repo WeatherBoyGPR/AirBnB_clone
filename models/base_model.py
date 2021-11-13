@@ -28,16 +28,16 @@ class BaseModel():
         c. udated_at (datetime) - assigned when created and updated everytime object is changed.
 
         """
-        timef = "%Y-%m-%dT%H:%M:%S.%f"
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.utcnow()
-        self.updated_at = datetime.utcnow()
-        if len(kwargs) != 0:
-            for c, u in kwargs.items():
-                if c == "created_at" or c == "updated_at":
-                    self.__dict__[c] = datetime.strptime(u, timef)
-                else:
-                    self.__dict__[c] == u
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == "created_at" or key == "updated_at":
+                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                if key != "__class__":
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.utcnow()
+            self.updated_at = datetime.utcnow()
 
     def __str__(self):
         """
