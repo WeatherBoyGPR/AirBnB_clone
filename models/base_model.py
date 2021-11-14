@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 
 """
-Defining BaseModel class that defines all common 
+Defining BaseModel class that defines all common
 attributes/methods for other classes
 """
 
 import models
 import uuid
 from datetime import datetime
+
 
 class BaseModel():
     """
@@ -25,8 +26,8 @@ class BaseModel():
             created for each class instance.
         b. created_at (datetime) - assignes the current datetime,
             whe instance is created.
-        c. udated_at (datetime) - assigned when created and updated everytime object is changed.
-
+        c. udated_at (datetime) - assigned when created and updated
+        everytime object is changed.
         """
         if kwargs:
             for key, value in kwargs.items():
@@ -48,7 +49,7 @@ class BaseModel():
 
     def save(self):
         """
-        Updates the public instance attribute 
+        Updates the public instance attribute
         with current date & time
         """
         self.updated_at = datetime.utcnow()
