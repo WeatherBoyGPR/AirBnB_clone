@@ -21,7 +21,7 @@ class FileStorage:
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
         newdict_objs = {} #new dict to store the keys and value that will save
-        for key, val in self.__objects: #pass trought for each key/value
+        for key, val in self.__objects: #pass trought for each key/val
             newdict_objs[key] = val.to_dict()
         with open(self.__file_path, 'w') as json_f: #file handling
             json_f.write(json.dumps(newdict_objs)) #dumps: encode json data
@@ -31,6 +31,6 @@ class FileStorage:
         """deserializes the JSON file to __objects"""
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, 'r') as json_f:
-                tmp-dict_objs = json.loads(json_f) #loads: decode json data
-            for key, val in tmp-dict_objs.items():
+                othrdict_objs = json.loads(json_f) #loads: decode json data
+            for key, val in othrdict_objs.items():
                 self.__objects[key] = BaseModel(**val)
