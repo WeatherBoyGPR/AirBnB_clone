@@ -1,9 +1,10 @@
 #!/usr/bin/pytho3
 """
+Defining FileStorage Class
 """
 
 import json
-from models.base_model import BaseModel
+import os
 
 
 class FileStorage:
@@ -12,8 +13,10 @@ class FileStorage:
     Class Attributes:
     __file_path - string with JSON file path ('file.json')
     """
-    __file_path = "file.json" """path to the JSON file"""
-    __objects = {} """is a dictionary"""
+    __file_path = "file.json"
+    """path to the JSON file"""
+    __objects = {}
+    """is a dictionary"""
 
     def all(self):
         """returns the dict __objects"""
@@ -45,7 +48,7 @@ class FileStorage:
         """deserializes the JSON file to __objects"""
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, 'r') as json_f:
-                tmp-dict_objs = json.loads(json_f)
+                dict_objs = json.load(json_f)
                 """loads: decode json data"""
-            for key, val in tmp-dict_objs.items():
+            for key, val in dict_objs.items():
                 self.__objects[key] = BaseModel(**val)
