@@ -61,23 +61,43 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    def do_destroy(self, args):
-        """Deletes an instance based on the class and id"""
+    def do_all(self, args):
+        """Print str representation of instance"""
         args = shlex.split(args)
+        obj_list = []
         if len(args) == 0:
-            print("** class name missing **")
+            for value in models.storage.all().values():
+                obj_list.append(str(value))
+            print("[", end="")
+            print(", ".join(obj_list), end="")
+            print("]")
         elif args[0] in classes:
-            if len(args) > 1:
-                key = args[0] + "." + args[1]
-                if key in models.storage.all():
-                    models.storage.all().pop(key)
-                    models.storage.save()
-                else:
-                    print("** no instance found **")
-            else:
-                print("** instance id missing **")
+            for key in models.storage.all():
+                if args[0] in key:
+                    obj_list.append(str(models.storage.all()[key]))
+            print("[", end="")
+            print(", ".join(obj_list), end="")
+            print("]")
         else:
             print("** class doesn't exist **")
+
+    def do_destroy(self, args):
+            """Deletes an instance based on the class and id"""
+            args = shlex.split(args)
+            if len(args) == 0:
+                print("** class name missing **")
+            elif args[0] in classes:
+                if len(args) > 1:
+                    key = args[0] + "." + args[1]
+                    if key in models.storage.all():
+                        models.storage.all().pop(key)
+                        models.storage.save()
+                    else:
+                        print("** no instance found **")
+                else:
+                    print("** instance id missing **")
+            else:
+                print("** class doesn't exist **")
 
 
 if __name__ == '__main__':
