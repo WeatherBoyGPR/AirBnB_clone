@@ -9,6 +9,7 @@ from models.base_model import BaseModel
 
 classes = {"BaseModel": BaseModel}
 
+
 class HBNBCommand(cmd.Cmd):
     """
     Define HBnB console

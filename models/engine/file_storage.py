@@ -7,6 +7,7 @@ import json
 import os
 from models.base_model import BaseModel
 
+
 class FileStorage:
     """
     Class for Serializes and Deserializes
@@ -33,16 +34,16 @@ class FileStorage:
         newdict_objects = {}
         """new dict to store the keys and value that will save"""
         for key in self.__objects:
-             """pass trought for each key/value"""
-             newdict_objects[key] = self.__objects[key].to_dict()
+            """pass trought for each key/value"""
+            newdict_objects[key] = self.__objects[key].to_dict()
         with open(self.__file_path, 'w') as json_f:
-             """file handling"""
-             json.dump(newdict_objects, json_f)
-             """
-             dumps: encode json data
-             converts dict object into JSON string data format
-             and write to file
-             """
+            """file handling"""
+            json.dump(newdict_objects, json_f)
+            """
+            dumps: encode json data
+            converts dict object into JSON string data format
+            and write to file
+            """
 
     def reload(self):
         """deserializes the JSON file to __objects"""
