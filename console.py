@@ -12,7 +12,8 @@ classes = {"BaseModel": BaseModel}
 
 class HBNBCommand(cmd.Cmd):
     """
-    Define HBnB console
+    Define HBnB console:
+    Class contains command interpreter's entry point
     """
 
     prompt = "(hbnb) "
@@ -78,6 +79,53 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
+
+    
+    def do_all(self, args):
+        """Prints all string representation of all instances based or not on the class name"""
+        str_list = []
+        objs = models.storage.reload.all()
+        try:
+            if len(args) != 0:
+                eval(args)
+            else:
+                pass
+        except NameError:
+            print("** class doesn't exist **")
+            return
+
+        args.strip()
+        for key, value in objs.items():
+            if len(args) != 0:
+                if type(value) is eval(args):
+                    value = str(objs[key])
+                    str_list.append(value)
+            else:
+                value = str(objs[key])
+                str_list.append(value)
+
+        print(str_list)
+
+    def do_update(self, args):
+        """
+        Updates an instance based on the class name and id
+        by adding or updating attribute
+        Usage: update <class name> <id> <attribute name> "<attribute value>"
+        """
+        load = args.split()
+        objs = models.storage.all()
+
+        if len(load) == 0:  # If the class name is missing
+            print("** class name missing **")
+            return
+        if load[0] in model.classes:
+            if len(load) < 2:  # If the id is missing
+                print("** instance id missing **")
+                return
+            elif len(load) <3:  # If the attribute name is missing
+                print("** attribute name missing **")
+                return
+
 
 
 if __name__ == '__main__':
