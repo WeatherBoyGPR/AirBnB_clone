@@ -30,29 +30,28 @@ class FileStorage:
         self.__objects[key] = obj
 
     def save(self):
-        """serializes __objects to the JSON file (path: __file_path)"""
-        newdict_objects = {}
-        """new dict to store the keys and value that will save"""
-        for key in self.__objects:
-            """pass trought for each key/value"""
-            newdict_objects[key] = self.__objects[key].to_dict()
+        """serializes __objects to the JSON file (path: __file_path)
+            newdic_objs: store the keys and value that will save
+                2. It passes trought for each key/val
+                3. handels the files/ file handeling
+                4. Then open the file path as a json file
+                4.a. dumps the encoded data
+                5. converts dic object into JSON strin data format
+                5.a and writes 'w' to file 'json_f.write(dump(newdic obj))
+        """
+        newdict_objs = {}
         with open(self.__file_path, 'w') as json_f:
-            """file handling"""
-            json.dump(newdict_objects, json_f)
-            """
-            dumps: encode json data
-            converts dict object into JSON string data format
-            and write to file
-            """
+            for key, val in self.__objects.items():
+                newdict_objs[key] = val.to_dict()
+            json_f.write(json.dumps(newdict_objs))
 
     def reload(self):
         """deserializes the JSON file to __objects"""
+        emptdic_objs = {}
         try:
-            if os.path.isfile(self.__file_path):
-                with open(self.__file_path, 'r') as json_f:
-                    dict_objs = json.load(json_f)
-                    """loads: decode json data"""
-                for key, value in dict_objs.items():
+            with open(self.__file_path, 'r') as json_f:
+                emptdict_objs = json.loads(json_f.read())  # loads: decode json data
+                for key, val in emptdict_objs.items():
                     self.__objects[key] = BaseModel(**val)
         except:
             pass
