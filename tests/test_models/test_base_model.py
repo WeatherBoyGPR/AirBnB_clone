@@ -7,8 +7,10 @@ import uuid
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
+
 class TestBase_Model(unittest.TestCase):
-    """Test for BaseModel class methods
+    """
+        Test for BaseModel class methods
     """
 
     def test_inst(self):
