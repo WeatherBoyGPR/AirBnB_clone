@@ -113,6 +113,7 @@ class HBNBCommand(cmd.Cmd):
         Usage: update <class name> <id> <attribute name> "<attribute value>"
         """
         load = args.split()
+        models.storage.reload()
         objs = models.storage.all()
 
         if len(load) == 0:  # If the class name is missing
@@ -125,6 +126,20 @@ class HBNBCommand(cmd.Cmd):
             elif len(load) <3:  # If the attribute name is missing
                 print("** attribute name missing **")
                 return
+            elif len(load) < 4:
+                print("** value missing **")
+                return
+            else:
+                key = (load[0] + "." + load[1])
+                try:
+                    objs[key].__dict__[load[2]] = load[3]
+                    objs[key].__dict__[
+                        "updated_at"] = datetime.now()
+                    models.storage.save()
+                except KeyError:
+                    print("** no instance found **")
+        else:
+            print("** class doesn't exist **")
 
 
 
