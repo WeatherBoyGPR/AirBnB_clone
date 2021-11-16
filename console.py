@@ -4,7 +4,7 @@ Contains the entry point of the command interpreter for HBnB
 """
 
 import cmd
-import shlex
+import models
 from models.base_model import BaseModel
 
 classes = {"BaseModel": BaseModel}
@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """Creates a new instance of class"""
-        args = shlex.split(args)
+        args = models.split(args)
         if len(args) == 0:
             print("** class name missing **")
             return False
@@ -46,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """Prints an instance as a string based on the class and id"""
-        args = shlex.split(arg)
+        args = models.split(arg)
         if len(args) == 0:
             print("** class name missing **")
             return False
@@ -64,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, args):
         """Deletes an instance based on the class and id"""
-        args = shlex.split(args)
+        args = models.split(args)
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] in classes:
