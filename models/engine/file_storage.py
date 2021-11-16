@@ -40,16 +40,18 @@ class FileStorage:
                 5.a and writes 'w' to file 'json_f.write(dump(newdic obj))
         """
         newdict_objs = {}
-        for key, val in self.__objects:
-            newdict_objs[key] = val.to_dict()
         with open(self.__file_path, 'w') as json_f:
+            for key, val in self.__objects.items():
+                newdict_objs[key] = val.to_dict()
             json_f.write(json.dumps(newdict_objs))
 
     def reload(self):
         """deserializes the JSON file to __objects"""
-        if os.path.isfile(self.__file_path):
+        emptdic_objs = {}
+        try:
             with open(self.__file_path, 'r') as json_f:
-                othrdict_objs = json.loads(json_f)  # loads: decode json data
-
-            for key, val in othrdict_objs.items():
-                self.__objects[key] = BaseModel(**val)
+                emptdict_objs = json.loads(json_f.read())  # loads: decode json data
+                for key, val in emptdict_objs.items():
+                    self.__objects[key] = BaseModel(**val)
+        except:
+            pass
