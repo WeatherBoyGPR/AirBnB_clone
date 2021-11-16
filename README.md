@@ -32,6 +32,57 @@ class Mammals:
 * How to manage datetime
 * What is an UUID
 
+
+Console execution examples interactive vs non-interactive:
+
+**Interactive mode**
+
+```
+$ ./console.py
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+
+(hbnb) 
+(hbnb) help quit
+Quit command to exit the program
+
+(hbnb)
+(hbnb) help create
+Creates a new instance of class
+
+(hbnb)
+(hbnb) quit
+$
+```
+
+**VS. on how non-interactive mode looks**
+
+```
+$ echo "help" | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb) 
+$
+$ cat test_help
+help
+$
+$ cat test_help | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb) 
+$
+```
+
+
 ### Usage of `*args` and `**kwargs`
 -----------------------------------
 
