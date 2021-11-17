@@ -4,7 +4,7 @@ Contains the entry point of the command interpreter for HBnB
 """
 
 import cmd
-import models
+import shlex
 from models.base_model import BaseModel
 
 classes = {"BaseModel": BaseModel}
@@ -12,8 +12,7 @@ classes = {"BaseModel": BaseModel}
 
 class HBNBCommand(cmd.Cmd):
     """
-    Define HBnB console:
-    Class contains command interpreter's entry point
+    Define HBnB console
     """
 
     prompt = "(hbnb) "
@@ -32,7 +31,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """Creates a new instance of class"""
-        args = models.split(args)
+        args = shlex.split(args)
         if len(args) == 0:
             print("** class name missing **")
             return False
@@ -46,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """Prints an instance as a string based on the class and id"""
-        args = models.split(arg)
+        args = shlex.split(arg)
         if len(args) == 0:
             print("** class name missing **")
             return False
@@ -83,7 +82,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_destroy(self, args):
-<<<<<<< HEAD
             """Deletes an instance based on the class and id"""
             args = shlex.split(args)
             if len(args) == 0:
@@ -107,10 +105,6 @@ class HBNBCommand(cmd.Cmd):
         integers = ["number_rooms", "number_bathrooms", "max_guest",
                     "price_by_night"]
         floats = ["latitude", "longitude"]
-=======
-        """Deletes an instance based on the class and id"""
-        args = models.split(args)
->>>>>>> 607f56ddf8031ec5e6d0c8ce2328d9f835dc6b5f
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] in classes:
@@ -142,68 +136,6 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
-
-    
-    def do_all(self, args):
-        """Prints all string representation of all instances based or not on the class name"""
-        str_list = []
-        objs = models.storage.reload.all()
-        try:
-            if len(args) != 0:
-                eval(args)
-            else:
-                pass
-        except NameError:
-            print("** class doesn't exist **")
-            return
-
-        args.strip()
-        for key, value in objs.items():
-            if len(args) != 0:
-                if type(value) is eval(args):
-                    value = str(objs[key])
-                    str_list.append(value)
-            else:
-                value = str(objs[key])
-                str_list.append(value)
-
-        print(str_list)
-
-    def do_update(self, args):
-        """
-        Updates an instance based on the class name and id
-        by adding or updating attribute
-        Usage: update <class name> <id> <attribute name> "<attribute value>"
-        """
-        load = args.split()
-        models.storage.reload()
-        objs = models.storage.all()
-
-        if len(load) == 0:  # If the class name is missing
-            print("** class name missing **")
-            return
-        if load[0] in model.classes:
-            if len(load) < 2:  # If the id is missing
-                print("** instance id missing **")
-                return
-            elif len(load) <3:  # If the attribute name is missing
-                print("** attribute name missing **")
-                return
-            elif len(load) < 4:
-                print("** value missing **")
-                return
-            else:
-                key = (load[0] + "." + load[1])
-                try:
-                    objs[key].__dict__[load[2]] = load[3]
-                    objs[key].__dict__[
-                        "updated_at"] = datetime.now()
-                    models.storage.save()
-                except KeyError:
-                    print("** no instance found **")
-        else:
-            print("** class doesn't exist **")
-
 
 
 if __name__ == '__main__':
