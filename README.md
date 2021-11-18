@@ -4,9 +4,11 @@ AirBnB clone - The console
 <p>
 This console project is very similar to shell except its a single use function.
 "A Command-Line Interface" from where it allows us (nerds/developers), admin, etc., to;
+
   * Create,
   * Modify and,
   * Delete Objects.
+
 All connected from the file storage. We are bulding a tool where you can manipulate what you want to work,
 or fix something that doesnt work from the file storage. After whiteboarding your ideas, this is one of the first steps
 before getting started to build the rest of a web application. In this case using AirBnB as an example, called
@@ -64,7 +66,8 @@ in order to achieve the correct output while managing our Cloned AirBnB's object
     * The <FileStorage>, where it'll be able to save and retrieve any data needed.
 </p>
 
-#How to **USE** and **START** the Command Interpreter:
+##How to USE and START the Command Interpreter:
+
 There are 2 way to use the Interpreter.
 The console execution examples interactive vs non-interactive:
 
@@ -122,7 +125,7 @@ EOF  help  quit
 $
 ```
 
-|**Console Commands available**|
+| |**Console Commands available**|
 |:-------:|-----------:|
 | `all` | Allows displays all instances whether their based or not on the class name. |
 | `create` | Allows to create an instance of the class and return it's id. |
@@ -216,6 +219,6 @@ Resources
 
 ## AUTHORS
 
-* **Gabriela Martinez** - [GabsMermaid](https://github.com/GabsMermaid)
-* **Gino** - [WeatherBoyGPR](https://github.com/WeatherBoyGPR)
-* **Johanne Lopez** - [johanne101](https://github.com/Johanne101)
+**Gabriela Martinez** - [GabsMermaid](https://github.com/GabsMermaid)
+**Gino** - [WeatherBoyGPR](https://github.com/WeatherBoyGPR)
+**Johanne Lopez** - [johanne101](https://github.com/Johanne101)
