@@ -6,6 +6,12 @@ Defining FileStorage Class
 import json
 import os
 from models.base_model import BaseModel
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
+from models.amenity import Amenity
 
 
 class FileStorage:
@@ -50,7 +56,7 @@ class FileStorage:
         emptdic_objs = {}
         try:
             with open(self.__file_path, 'r') as json_f:
-                emptdict_objs = json.loads(json_f.read())  # loads: decode json data
+                emptdict_objs = json.loads(json_f.read())
                 for key, val in emptdict_objs.items():
                     self.__objects[key] = BaseModel(**val)
         except:
