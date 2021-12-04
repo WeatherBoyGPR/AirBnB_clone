@@ -2,7 +2,11 @@
 """Test ModulePackage:
     BaseModel Class
 """
+
+import os
+import models
 import unittest
+import datetime
 import uuid
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
@@ -16,16 +20,17 @@ class TestBase_Model(unittest.TestCase):
     def test_inst(self):
         inst = BaseModel()
 
+    @classmethod
     def setUpClass(self):
         ''' Test Basic base models'''
         self.base = BaseModel()
-        self.base_model_ = BaseModel()
+        self.base_model = BaseModel()
 
     def test_str(self):
         ''' Test __str__  '''
         base = BaseModel()
         base_model = "[BaseModel]"
-        self.assertIsInstance(self.base.id, self.test0.__str__(), str)
+        self.assertIsInstance(self.base.__str__(), str)
 
     def test_str_content(self):
         """verify if __str__ content true"""
@@ -47,8 +52,8 @@ class TestBase_Model(unittest.TestCase):
 
     def test_d_is_equal(self):
         '''test datetime'''
-        self.assertIsInstance(self.base.created_at, datetime)
-        self.assertIsInstance(self.base.updated_at, datetime)
+        self.assertIsInstance(self.base.created_at, datetime.datetime)
+        self.assertIsInstance(self.base.updated_at, datetime.datetime)
 
     def test_d_update(self):
         '''test if saved is equal'''
