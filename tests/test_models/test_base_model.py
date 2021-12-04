@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Test ModulePackage:
-    BaseModel Class
+    BaseModel Class Unittests
 """
 
 import os
@@ -30,7 +30,8 @@ class TestBase_Model(unittest.TestCase):
         ''' Test __str__  '''
         base = BaseModel()
         base_model = "[BaseModel]"
-        self.assertIsInstance(self.base.__str__(), str)
+        self.assertIsInstance
+(self.base.__str__(), str)
 
     def test_str_content(self):
         """verify if __str__ content true"""
