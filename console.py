@@ -5,6 +5,7 @@ Contains the entry point of the command interpreter for HBnB
 
 import cmd
 import shlex
+import models
 from models.base_model import BaseModel
 from models.city import City
 from models.place import Place
