@@ -23,6 +23,7 @@ from models.place import Place
 from models.review import Review
 from models.engine.file_storage import FileStorage
 
+
 class TestBase_Model(unittest.TestCase):
     """
         Test for BaseModel class methods
@@ -125,6 +126,7 @@ class TestUser(unittest.TestCase):
         self.testUser.last_name = "1234"
         self.assertIsInstance(self.testUser.last_name, str)
 
+
 class TestState(unittest.TestCase):
     """
         Test for State class methods
@@ -144,6 +146,7 @@ class TestState(unittest.TestCase):
         """ Test name attribute """
         self.testState.name = "1234googmeep"
         self.assertIsInstance(self.testState.name, str)
+
 
 class TestCity(unittest.TestCase):
     """
@@ -170,6 +173,7 @@ class TestCity(unittest.TestCase):
         self.testCity.name = "Jefferson"
         self.assertIsInstance(self.testCity.name, str)
 
+
 class TestAmenity(unittest.TestCase):
     """
         Test for Amenity class methods
@@ -190,6 +194,7 @@ class TestAmenity(unittest.TestCase):
         self.testAmenity.name = "1234googmeep"
         self.assertIsInstance(self.testAmenity.name, str)
 
+
 class TestPlace(unittest.TestCase):
     """
         Test for Place class methods
@@ -207,7 +212,7 @@ class TestPlace(unittest.TestCase):
 
     def test_city_id(self):
         """ Test city_id attribute """
-        self.testPlace.city_id =  ""
+        self.testPlace.city_id = ""
         self.assertIsInstance(self.testPlace.city_id, str)
 
     def test_user_id(self):
@@ -260,6 +265,7 @@ class TestPlace(unittest.TestCase):
         self.testPlace.amenity_ids = []
         self.assertIsInstance(self.testPlace.amenity_ids, list)
 
+
 class TestReview(unittest.TestCase):
     """
         Test for Review class methods
@@ -289,7 +295,6 @@ class TestReview(unittest.TestCase):
         """ Test text attribute """
         self.testReview.text = "asfsafqf"
         self.assertIsInstance(self.testReview.text, str)
-
 
 
 if __name__ == "__main__":
