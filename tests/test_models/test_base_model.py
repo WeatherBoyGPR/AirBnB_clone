@@ -31,7 +31,7 @@ class TestBase_Model(unittest.TestCase):
         base = BaseModel()
         base_model = "[BaseModel]"
         self.assertIsInstance
-(self.base.__str__(), str)
+        (self.base.__str__(), str)
 
     def test_str_content(self):
         """verify if __str__ content true"""
